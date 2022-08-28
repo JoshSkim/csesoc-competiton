@@ -1,5 +1,4 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import logo from '.assets/images/logo.png'; 
 import React from "react";
 import CourseTile from "../components/courseTile";
 import CourseRow from "../components/courseRow";
@@ -91,7 +90,10 @@ const Home = () => {
   return (
     <SafeAreaView>
       {/* the banner will be here */}
-      <Image source={logo} style={{ width: 1000, height: 1000 }} /> 
+      <Image
+        source={require("../assets/images/logo.png")}
+        style={styles2.bannerStyle}
+      />
       <Text style={styles.title}>Course App</Text>
       <CourseRow title={data.title} courses={data.courses} />
       <CourseRow title={data2.title} courses={data2.courses} />
@@ -114,5 +116,10 @@ const styles2 = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 40,
     color: "white",
+  },
+  bannerStyle: {
+    width: 300,
+    height: 100,
+    resizeMode: "contain",
   },
 });
