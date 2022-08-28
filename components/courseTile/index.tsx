@@ -1,12 +1,9 @@
 import { View, Text, ImageBackground } from "react-native";
 import React from "react";
 import styles from "./styles";
-export type courseTileProp = {
-  id: string;
-  courseName: string;
-  courseCode: string;
-};
-const CourseTile = (props: courseTileProp) => {
+import { course } from "../../types";
+
+const CourseTile = (props: course) => {
   return (
     <View style={styles.container}>
       <ImageBackground
