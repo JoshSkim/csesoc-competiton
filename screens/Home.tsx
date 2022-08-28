@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CourseTile from "../components/courseTile";
 import CourseRow from "../components/courseRow";
@@ -90,7 +90,11 @@ const Home = () => {
   return (
     <SafeAreaView>
       {/* the banner will be here */}
-      <Text style={styles.title}>title</Text>
+      <Image
+        source={require("../assets/images/logo.png")}
+        style={styles2.bannerStyle}
+      />
+      <Text style={styles.title}>Course App</Text>
       <CourseRow title={data.title} courses={data.courses} />
       <CourseRow title={data2.title} courses={data2.courses} />
       <Text style={styles2.title}>WAM</Text>
@@ -102,7 +106,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 100,
+    fontSize: 50,
     color: "white",
   },
 });
@@ -112,5 +116,10 @@ const styles2 = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 40,
     color: "white",
+  },
+  bannerStyle: {
+    width: 300,
+    height: 100,
+    resizeMode: "contain",
   },
 });
