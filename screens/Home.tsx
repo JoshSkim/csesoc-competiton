@@ -94,7 +94,6 @@ const Home = () => {
         source={require("../assets/images/logo.png")}
         style={styles2.bannerStyle}
       />
-      <Text style={styles.title}>Course App</Text>
       <CourseRow title={data.title} courses={data.courses} />
       <CourseRow title={data2.title} courses={data2.courses} />
       <Text style={styles2.title}>WAM</Text>
@@ -118,8 +117,9 @@ const styles2 = StyleSheet.create({
     color: "white",
   },
   bannerStyle: {
-    width: 300,
-    height: 100,
+    width: 420,
+    height: 80,
+    resizeMode: "center",
     resizeMode: "contain",
   },
 });
