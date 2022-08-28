@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Image, SafeAreaView, StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
 import CourseTile from "../components/courseTile";
 import CourseRow from "../components/courseRow";
@@ -88,6 +88,8 @@ const data2 = {
 };
 const Home = () => {
   return (
+    <ScrollView showsVerticalScrollIndicator={false} 
+    style={styles.scrollView}>
     <SafeAreaView>
       {/* the banner will be here */}
       <Image
@@ -98,6 +100,7 @@ const Home = () => {
       <CourseRow title={data2.title} courses={data2.courses} />
       <Text style={styles2.title}>WAM</Text>
     </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -108,18 +111,20 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: "white",
   },
+  scrollView: {
+    marginHorizontal: 0,
+  },
 });
 const styles2 = StyleSheet.create({
   title: {
     margin: 10,
     fontWeight: "bold",
-    fontSize: 40,
+    fontSize: 50,
     color: "white",
   },
   bannerStyle: {
     width: 420,
     height: 80,
-    resizeMode: "center",
     resizeMode: "contain",
   },
 });
