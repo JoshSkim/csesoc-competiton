@@ -16,6 +16,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import AddCourse from "../screens/AddCourse";
 import Home from "../screens/Home";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -102,7 +103,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="CourseList"
-        component={TabTwoScreen}
+        component={AddCourse}
         options={{
           title: "Course List",
           tabBarIcon: ({ color }) => (
@@ -132,7 +133,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="AddCourse"
-        component={TabTwoScreen}
+        component={AddCourse}
         options={{
           title: "Add Course",
           tabBarIcon: ({ color }) => (
