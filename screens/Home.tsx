@@ -22,26 +22,6 @@ const data = {
       courseName: "Data Structure and Algorithm",
       courseCode: "COMP2521",
     },
-    {
-      id: "4",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
-    },
-    {
-      id: "5",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
-    },
-    {
-      id: "6",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
-    },
-    {
-      id: "7",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
-    },
   ],
 };
 
