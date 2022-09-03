@@ -17,16 +17,88 @@ const AddCourse = () => {
   const [courseName, setCourseName] = useState("");
   const termList = [
     {
-      label: "T1",
-      value: "T1",
+      label: "16T1",
+      value: "16T1",
     },
     {
-      label: "T2",
-      value: "T2",
+      label: "16T2",
+      value: "16T2",
     },
     {
-      label: "T3",
-      value: "T3",
+      label: "17T1",
+      value: "17T1",
+    },
+    {
+      label: "17T2",
+      value: "17T2",
+    },
+    {
+      label: "18T1",
+      value: "18T1",
+    },
+    {
+      label: "18T2",
+      value: "18T2",
+    },
+    {
+      label: "19T1",
+      value: "19T1",
+    },
+    {
+      label: "19T2",
+      value: "19T2",
+    },
+    {
+      label: "19T3",
+      value: "19T3",
+    },
+    {
+      label: "20T1",
+      value: "20T1",
+    },
+    {
+      label: "20T2",
+      value: "20T2",
+    },
+    {
+      label: "20T3",
+      value: "20T3",
+    },
+    {
+      label: "21T1",
+      value: "21T1",
+    },
+    {
+      label: "21T2",
+      value: "21T2",
+    },
+    {
+      label: "21T3",
+      value: "21T3",
+    },
+    {
+      label: "22T1",
+      value: "22T1",
+    },
+    {
+      label: "22T2",
+      value: "22T2",
+    },
+    {
+      label: "22T3",
+      value: "22T3",
+    },
+    {
+      label: "23T1",
+      value: "23T1",
+    },
+    {
+      label: "23T2",
+      value: "23T2",
+    },
+    {
+      label: "23T3",
+      value: "23T3",
     },
   ];
   // function after button add course
