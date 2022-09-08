@@ -1,7 +1,15 @@
-import { Image, SafeAreaView, StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import CourseTile from "../components/courseTile";
 import CourseRow from "../components/courseRow";
+import WamLineChart from "../components/wamLineChart/WamLineChart";
 
 const data = {
   id: "1",
@@ -88,18 +96,18 @@ const data2 = {
 };
 const Home = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} 
-    style={styles.scrollView}>
-    <SafeAreaView>
-      {/* the banner will be here */}
-      <Image
-        source={require("../assets/images/logo.png")}
-        style={styles2.bannerStyle}
-      />
-      <CourseRow title={data.title} courses={data.courses} />
-      <CourseRow title={data2.title} courses={data2.courses} />
-      <Text style={styles2.title}>WAM</Text>
-    </SafeAreaView>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+      <SafeAreaView>
+        {/* the banner will be here */}
+        <Image
+          source={require("../assets/images/logo.png")}
+          style={styles2.bannerStyle}
+        />
+        <CourseRow title={data.title} courses={data.courses} />
+        <CourseRow title={data2.title} courses={data2.courses} />
+        <Text style={styles2.title}>WAM</Text>
+        <WamLineChart />
+      </SafeAreaView>
     </ScrollView>
   );
 };
