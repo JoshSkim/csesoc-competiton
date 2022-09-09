@@ -5,102 +5,121 @@ import {
   Text,
   View,
   ScrollView,
-} from "react-native";
-import React from "react";
-import CourseTile from "../components/courseTile";
-import CourseRow from "../components/courseRow";
-import WamLineChart from "../components/wamLineChart/WamLineChart";
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import CourseTile from '../components/courseTile';
+import CourseRow from '../components/courseRow';
+import WamLineChart from '../components/wamLineChart/WamLineChart';
+import axios from 'axios';
+import { course } from '../types';
 
 const data = {
-  id: "1",
-  title: "Current Courses",
+  id: '1',
+  title: 'Current Courses',
   courses: [
     {
-      id: "1",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '1',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "2",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '2',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "3",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '3',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "4",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '4',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "5",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '5',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "6",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '6',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
     {
-      id: "7",
-      courseName: "Data Structure and Algorithm",
-      courseCode: "COMP2521",
+      id: '7',
+      courseName: 'Data Structure and Algorithm',
+      courseCode: 'COMP2521',
     },
   ],
 };
 
 const data2 = {
-  id: "1",
-  title: "Past Courses",
+  id: '1',
+  title: 'Past Courses',
   courses: [
     {
-      id: "1",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '1',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "2",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '2',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "3",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '3',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "4",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '4',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "5",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '5',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "6",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '6',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
     {
-      id: "7",
-      courseName: "Programming Fundamentals",
-      courseCode: "COMP1511",
+      id: '7',
+      courseName: 'Programming Fundamentals',
+      courseCode: 'COMP1511',
     },
   ],
 };
+
 const Home = () => {
+  const [currCourse, setCurrCourse] = useState([]);
+  const [pastCourse, setPastCourse] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://192.168.1.104:3000/course/getCurr').then((res) => {
+      setCurrCourse(res.data);
+    });
+    axios.get('http://192.168.1.104:3000/course/getPast').then((res) => {
+      setPastCourse(res.data);
+      console.log(res.data);
+    });
+    return () => {
+      console.log('unmount');
+    };
+  }, []);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
       <SafeAreaView>
         {/* the banner will be here */}
         <Image
-          source={require("../assets/images/logo.png")}
+          source={require('../assets/images/logo.png')}
           style={styles2.bannerStyle}
         />
         <CourseRow title={data.title} courses={data.courses} />
@@ -117,7 +136,7 @@ export default Home;
 const styles = StyleSheet.create({
   title: {
     fontSize: 50,
-    color: "white",
+    color: 'white',
   },
   scrollView: {
     marginHorizontal: 0,
@@ -126,13 +145,13 @@ const styles = StyleSheet.create({
 const styles2 = StyleSheet.create({
   title: {
     margin: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 50,
-    color: "white",
+    color: 'white',
   },
   bannerStyle: {
     width: 420,
     height: 80,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
 });
