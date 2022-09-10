@@ -1,4 +1,5 @@
 import {
+  FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -15,6 +16,8 @@ import {
   Provider,
   TextInput,
 } from 'react-native-paper';
+import AssBarChart from '../components/assBarChart';
+import MarksTile from '../components/marksTile';
 
 const CourseScreen = ({ route, navigation }) => {
   //getting props
@@ -23,12 +26,41 @@ const CourseScreen = ({ route, navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  //bar char daata
+  const ass = [
+    {
+      name: 'LAB01',
+      marks: '20',
+    },
+    {
+      name: 'LAB02',
+      marks: '20',
+    },
+    {
+      name: 'LAB03',
+      marks: '20',
+    },
+    {
+      name: 'ASS1',
+      marks: '20',
+    },
+  ];
+  const barData = {
+    labels: ['LAB01', 'LAB02', 'LAB03', 'ASS1'],
+    datasets: [
+      {
+        data: [20, 30, 70, 65],
+      },
+    ],
+  };
   return (
     <Provider>
       <SafeAreaView>
-        <Text style={{ color: 'white' }}>{course.courseCode}</Text>
-        <Text style={{ color: 'white' }}>{course.courseName}</Text>
-
+        <Text style={[styles.title, { marginTop: 30 }]}>
+          {course.courseCode}
+        </Text>
+        <Text style={styles.title}>{course.courseName}</Text>
+        <AssBarChart data={barData} />
         <Portal>
           <Modal
             visible={visible}
@@ -51,14 +83,6 @@ const CourseScreen = ({ route, navigation }) => {
               onChangeText={(text) => console.log(text)}
               placeholder='eg: 80, 1.2'
             />
-            <Text style={styles.title2}>Total Assesment Name</Text>
-            <TextInput
-              style={styles.textInput}
-              mode='outlined'
-              maxLength={8}
-              onChangeText={(text) => console.log(text)}
-              placeholder='eg: 100, 1.6'
-            />
             <Text style={styles.title2}>Assesment Weightage</Text>
             <TextInput
               style={styles.textInput}
@@ -76,6 +100,11 @@ const CourseScreen = ({ route, navigation }) => {
             </Button>
           </Modal>
         </Portal>
+        <Text style={styles.title}>MARKS</Text>
+        <FlatList
+          data={ass}
+          renderItem={({ item }) => <MarksTile data={item} />}
+        />
         <FAB icon='plus' style={styles.fab} onPress={showModal} />
       </SafeAreaView>
     </Provider>
@@ -102,9 +131,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    margin: 10,
-
-    color: 'black',
+    padding: 10,
+    color: 'white',
     fontSize: 22,
   },
   title2: {
