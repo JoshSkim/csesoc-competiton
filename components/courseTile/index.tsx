@@ -8,7 +8,9 @@ const CourseTile = (props: course) => {
   const navigation = useNavigation();
   const onPress = () => {
     console.log('check');
-    navigation.navigate('CourseScreen');
+    console.log(props.courseCode);
+
+    navigation.navigate('CourseScreen', { course: props });
   };
   return (
     <TouchableOpacity onPress={onPress}>

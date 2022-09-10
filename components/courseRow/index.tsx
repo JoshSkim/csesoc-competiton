@@ -1,8 +1,8 @@
-import { View, Text, FlatList } from "react-native";
-import React from "react";
-import { course } from "../../types";
-import CourseTile from "../courseTile";
-import styles from "./styles";
+import { View, Text, FlatList } from 'react-native';
+import React from 'react';
+import { course } from '../../types';
+import CourseTile from '../courseTile';
+import styles from './styles';
 export type courseRowProps = {
   title: string;
   courses: Array<course>;

@@ -46,7 +46,7 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 
 export type course = {
   id: string;
-  name: string;
-  code: string;
+  courseName: string;
+  courseCode: string;
   term: string;
 };
