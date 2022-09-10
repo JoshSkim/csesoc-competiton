@@ -3,31 +3,33 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, Entypo, Feather, Octicons } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { FontAwesome, Entypo, Feather, Octicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
-} from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from 'react';
+import { ColorSchemeName, Pressable } from 'react-native';
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import AddCourse from "../screens/AddCourse";
-import Home from "../screens/Home";
-import ModalScreen from "../screens/ModalScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import AddCourse from '../screens/AddCourse';
+import CourseScreen from '../screens/CourseScreen';
+import Home from '../screens/Home';
+import ModalScreen from '../screens/ModalScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 import {
+  HomeStackParamList,
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
-} from "../types";
-import LinkingConfiguration from "./LinkingConfiguration";
+} from '../types';
+import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({
   colorScheme,
@@ -37,7 +39,7 @@ export default function Navigation({
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
     </NavigationContainer>
@@ -54,19 +56,37 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Root"
+        name='Root'
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="NotFound"
+        name='NotFound'
         component={NotFoundScreen}
-        options={{ title: "Oops!" }}
+        options={{ title: 'Oops!' }}
       />
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name='Modal' component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
+  );
+}
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+function HomeNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name='HomeScreen'
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name='CourseScreen'
+        component={CourseScreen}
+        options={{ headerShown: false }}
+      />
+    </HomeStack.Navigator>
   );
 }
 
@@ -81,19 +101,19 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName='Home'
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={Home}
+        name='Home'
+        component={HomeNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <Entypo
-              name="home"
+              name='home'
               size={30}
               style={{ marginBottom: -3 }}
               color={color}
@@ -102,13 +122,13 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="CourseList"
+        name='CourseList'
         component={AddCourse}
         options={{
-          title: "Course List",
+          title: 'Course List',
           tabBarIcon: ({ color }) => (
             <Feather
-              name="list"
+              name='list'
               size={30}
               style={{ marginBottom: -3 }}
               color={color}
@@ -117,13 +137,13 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Stats"
+        name='Stats'
         component={TabTwoScreen}
         options={{
-          title: "Stats",
+          title: 'Stats',
           tabBarIcon: ({ color }) => (
             <Octicons
-              name="graph"
+              name='graph'
               size={30}
               style={{ marginBottom: -3 }}
               color={color}
@@ -132,13 +152,13 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="AddCourse"
+        name='AddCourse'
         component={AddCourse}
         options={{
-          title: "Add Course",
+          title: 'Add Course',
           tabBarIcon: ({ color }) => (
             <Entypo
-              name="plus"
+              name='plus'
               size={30}
               style={{ marginBottom: -3 }}
               color={color}
@@ -154,7 +174,7 @@ function BottomTabNavigator() {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
+  name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;

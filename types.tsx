@@ -21,6 +21,10 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
 };
+export type HomeStackParamList = {
+  HomeScreen: undefined;
+  CourseScreen: undefined;
+};
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
@@ -42,7 +46,7 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 
 export type course = {
   id: string;
-  name: string;
-  code: string;
+  courseName: string;
+  courseCode: string;
   term: string;
 };
