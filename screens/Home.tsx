@@ -101,19 +101,6 @@ const Home = () => {
   const [currCourse, setCurrCourse] = useState([]);
   const [pastCourse, setPastCourse] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://192.168.1.104:3000/course/getCurr').then((res) => {
-      setCurrCourse(res.data);
-    });
-    axios.get('http://192.168.1.104:3000/course/getPast').then((res) => {
-      setPastCourse(res.data);
-      console.log(res.data);
-    });
-    return () => {
-      console.log('unmount');
-    };
-  }, []);
-
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
       <SafeAreaView>

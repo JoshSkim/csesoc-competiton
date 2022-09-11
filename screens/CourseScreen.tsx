@@ -1,5 +1,6 @@
 import {
   FlatList,
+  KeyboardAvoidingView,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -34,15 +35,15 @@ const CourseScreen = ({ route, navigation }) => {
     },
     {
       name: 'LAB02',
-      marks: '20',
+      marks: '30',
     },
     {
       name: 'LAB03',
-      marks: '20',
+      marks: '70',
     },
     {
       name: 'ASS1',
-      marks: '20',
+      marks: '65',
     },
   ];
   const barData = {
@@ -96,7 +97,7 @@ const CourseScreen = ({ route, navigation }) => {
               mode='contained'
               onPress={() => console.log('Pressed')}
             >
-              Add Course
+              Add Assesment
             </Button>
           </Modal>
         </Portal>

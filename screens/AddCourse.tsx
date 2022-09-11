@@ -104,19 +104,7 @@ const AddCourse = () => {
   ];
   // function after button add course
   const onPress = () => {
-    axios
-      .post('http://192.168.1.104:3000/course', {
-        name: courseName,
-        code: courseCode,
-        term,
-      })
-      .then(() => {
-        Alert.alert('Course Registered');
-      })
-      .catch((err) => {
-        Alert.alert('Please check the detailes entered');
-        console.log(err);
-      });
+    Alert.alert('course registered');
   };
   return (
     <Provider>
@@ -126,6 +114,7 @@ const AddCourse = () => {
           style={styles.textInput}
           mode='outlined'
           maxLength={8}
+          autoCapitalize='characters'
           onChangeText={(text) => setCourseCode(text)}
           placeholder='Enter Course Name'
           right={<TextInput.Affix text='/8' />}
