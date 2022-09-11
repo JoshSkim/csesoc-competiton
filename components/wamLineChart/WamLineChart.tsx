@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -6,17 +6,17 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
-} from "react-native";
+} from 'react-native';
 
 //import React Native chart Kit for different kind of Chart
-import { LineChart } from "react-native-chart-kit";
+import { LineChart } from 'react-native-chart-kit';
 
 const WamLineChart = () => {
   return (
     <>
       <LineChart
         data={{
-          labels: ["21T3", "21T1", "21T3", "21T3", "21T3", "21T3"],
+          labels: ['21T1', '21T2', '21T3', '22T1', '22T2', '22T3'],
           datasets: [
             {
               data: [73, 76, 84, 80, 75, 76],
@@ -24,12 +24,12 @@ const WamLineChart = () => {
             },
           ],
         }}
-        width={Dimensions.get("window").width - 16}
+        width={Dimensions.get('window').width - 16}
         height={220}
         chartConfig={{
-          backgroundColor: "#1cc910",
-          backgroundGradientFrom: "#eff3ff",
-          backgroundGradientTo: "#efefef",
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#eff3ff',
+          backgroundGradientTo: '#efefef',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
           style: {
@@ -50,7 +50,7 @@ export default WamLineChart;
 
 const styles = StyleSheet.create({
   header: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 18,
     padding: 16,
     marginTop: 16,
